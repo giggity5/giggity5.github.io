@@ -9,13 +9,13 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink:    #0D0F1A;
-    --cream:  #F5F2ED;
-    --violet: #7C3AED;
-    --gold:   #D4A853;
-    --slate:  #8B92A5;
-    --violet-light: #A78BFA;
-    --card-bg: #13162A;
+    --ink:    #0A0A0A; /* Pure Dark Black */
+    --cream:  #FFFFFF; /* Crisp White */
+    --violet: #FF2E4D; /* Crimson Red */
+    --gold:   #E5E5E5; /* Light Platinum Gray instead of gold */
+    --slate:  #A3A3A3; /* Medium Muted Slate */
+    --violet-light: #FF6B81; /* Soft Light Red */
+    --card-bg: #161616; /* Clean Charcoal Black for elements */
   }
 
   html { scroll-behavior: smooth; }
@@ -32,9 +32,9 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.25rem 4rem;
-    background: rgba(13,15,26,0.85);
+    background: rgba(10,10,10,0.9);
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(124,58,237,0.18);
+    border-bottom: 1px solid rgba(255,46,77,0.15);
   }
   .nav-logo {
     font-family: 'Playfair Display', serif;
@@ -56,7 +56,7 @@
     font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.25s;
     letter-spacing: 0.02em; text-decoration: none;
   }
-  .nav-cta:hover { background: var(--violet-light); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(124,58,237,0.4); }
+  .nav-cta:hover { background: var(--violet-light); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(255,46,77,0.4); }
 
   /* ── HERO ── */
   #hero {
@@ -68,19 +68,19 @@
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
     background:
-      radial-gradient(ellipse 60% 60% at 80% 40%, rgba(124,58,237,0.22) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 50% at 15% 75%, rgba(212,168,83,0.1) 0%, transparent 65%);
+      radial-gradient(ellipse 60% 60% at 80% 40%, rgba(255,46,77,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 15% 75%, rgba(255,255,255,0.05) 0%, transparent 65%);
   }
   .hero-grid {
     position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(255,46,77,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,46,77,0.03) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .hero-content { position: relative; z-index: 1; max-width: 900px; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35);
+    background: rgba(255,46,77,0.12); border: 1px solid rgba(255,46,77,0.3);
     border-radius: 50px; padding: 0.4rem 1rem;
     font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--violet-light); margin-bottom: 2rem;
@@ -93,14 +93,14 @@
     color: var(--cream); margin-bottom: 1.5rem;
   }
   h1.hero-title .gradient-word {
-    background: linear-gradient(135deg, var(--violet) 0%, var(--violet-light) 50%, var(--gold) 100%);
+    background: linear-gradient(135deg, var(--violet) 0%, var(--violet-light) 60%, #FFFFFF 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: gradientShift 4s ease-in-out infinite alternate;
   }
   @keyframes gradientShift {
     from { filter: hue-rotate(0deg); }
-    to   { filter: hue-rotate(20deg); }
+    to   { filter: hue-rotate(15deg); }
   }
   .hero-sub {
     font-size: clamp(1rem, 1.5vw, 1.2rem); color: var(--slate);
@@ -113,9 +113,9 @@
     font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600;
     cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block;
   }
-  .btn-primary:hover { background: var(--violet-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,58,237,0.45); }
+  .btn-primary:hover { background: var(--violet-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,46,77,0.45); }
   .btn-ghost {
-    border: 1px solid rgba(245,242,237,0.25); color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.25); color: var(--cream);
     padding: 0.9rem 2.2rem; border-radius: 50px; background: transparent;
     font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500;
     cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block;
@@ -123,7 +123,7 @@
   .btn-ghost:hover { border-color: var(--violet-light); color: var(--violet-light); }
   .hero-stats {
     display: flex; gap: 3rem; margin-top: 4rem;
-    padding-top: 2rem; border-top: 1px solid rgba(245,242,237,0.08);
+    padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08);
   }
   .stat-num {
     font-family: 'Playfair Display', serif;
@@ -137,8 +137,8 @@
     position: absolute; border-radius: 50%; filter: blur(80px);
     pointer-events: none; animation: floatShape 8s ease-in-out infinite;
   }
-  .shape-1 { width: 500px; height: 500px; background: rgba(124,58,237,0.12); right: -100px; top: 10%; animation-delay: 0s; }
-  .shape-2 { width: 300px; height: 300px; background: rgba(212,168,83,0.08); right: 20%; bottom: 5%; animation-delay: 3s; }
+  .shape-1 { width: 500px; height: 500px; background: rgba(255,46,77,0.08); right: -100px; top: 10%; animation-delay: 0s; }
+  .shape-2 { width: 300px; height: 300px; background: rgba(255,255,255,0.03); right: 20%; bottom: 5%; animation-delay: 3s; }
   @keyframes floatShape {
     0%,100% { transform: translateY(0) scale(1); }
     50%      { transform: translateY(-30px) scale(1.05); }
@@ -146,9 +146,9 @@
 
   /* ── MARQUEE ── */
   .marquee-section {
-    border-top: 1px solid rgba(245,242,237,0.06);
-    border-bottom: 1px solid rgba(245,242,237,0.06);
-    padding: 1.2rem 0; overflow: hidden; background: rgba(124,58,237,0.04);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 1.2rem 0; overflow: hidden; background: rgba(255,46,77,0.03);
   }
   .marquee-track {
     display: flex; white-space: nowrap;
@@ -186,7 +186,7 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
   .about-visual {
     aspect-ratio: 1; background: var(--ink);
-    border-radius: 24px; border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 24px; border: 1px solid rgba(255,46,77,0.2);
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
   }
@@ -196,13 +196,13 @@
   .logo-display {
     font-family: 'Playfair Display', serif;
     font-size: 5rem; font-weight: 900; text-align: center;
-    background: linear-gradient(135deg, var(--violet) 0%, var(--violet-light) 50%, var(--gold) 100%);
+    background: linear-gradient(135deg, var(--violet) 0%, var(--violet-light) 50%, #FFFFFF 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     line-height: 1;
   }
   .about-visual-ring {
     position: absolute; border-radius: 50%;
-    border: 1px solid rgba(124,58,237,0.15);
+    border: 1px solid rgba(255,46,77,0.15);
   }
   .ring1 { width: 110%; height: 110%; animation: rotateRing 20s linear infinite; }
   .ring2 { width: 90%; height: 90%; animation: rotateRing 15s linear infinite reverse; }
@@ -213,7 +213,7 @@
   .about-text p { color: var(--slate); line-height: 1.8; margin-bottom: 1.25rem; }
   .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
   .highlight-chip {
-    background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
+    background: rgba(255,46,77,0.05); border: 1px solid rgba(255,46,77,0.15);
     border-radius: 12px; padding: 1rem 1.25rem;
   }
   .highlight-chip strong { display: block; color: var(--cream); font-size: 1.1rem; margin-bottom: 0.15rem; }
@@ -223,20 +223,20 @@
   #services .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
   .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .service-card {
-    background: var(--card-bg); border: 1px solid rgba(245,242,237,0.06);
+    background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06);
     border-radius: 20px; padding: 2rem; cursor: default;
     transition: all 0.3s; position: relative; overflow: hidden;
   }
   .service-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--violet), var(--gold));
+    background: linear-gradient(90deg, var(--violet), #FFFFFF);
     transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
   }
-  .service-card:hover { transform: translateY(-6px); border-color: rgba(124,58,237,0.3); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+  .service-card:hover { transform: translateY(-6px); border-color: rgba(255,46,77,0.3); box-shadow: 0 24px 60px rgba(0,0,0,0.6); }
   .service-card:hover::before { transform: scaleX(1); }
   .service-icon {
     width: 52px; height: 52px; border-radius: 14px;
-    background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.25);
+    background: rgba(255,46,77,0.12); border: 1px solid rgba(255,46,77,0.25);
     display: flex; align-items: center; justify-content: center;
     font-size: 1.5rem; margin-bottom: 1.5rem;
   }
@@ -258,14 +258,14 @@
   .why-item p { font-size: 0.875rem; color: var(--slate); line-height: 1.7; }
   .why-right { position: relative; }
   .rating-card {
-    background: var(--ink); border: 1px solid rgba(124,58,237,0.2);
+    background: var(--ink); border: 1px solid rgba(255,46,77,0.2);
     border-radius: 24px; padding: 2.5rem; text-align: center;
   }
-  .stars { color: var(--gold); font-size: 1.75rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .stars { color: var(--violet); font-size: 1.75rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
   .rating-score { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: var(--cream); line-height: 1; }
   .rating-label { font-size: 0.85rem; color: var(--slate); margin-top: 0.5rem; margin-bottom: 2rem; }
   .review-snippet {
-    background: rgba(124,58,237,0.08); border-radius: 14px; padding: 1.25rem;
+    background: rgba(255,46,77,0.06); border-radius: 14px; padding: 1.25rem;
     border-left: 3px solid var(--violet); text-align: left; margin-top: 1rem;
   }
   .review-snippet p { font-size: 0.85rem; color: var(--cream); line-height: 1.6; font-style: italic; }
@@ -274,17 +274,17 @@
   /* ── REVIEWS ── */
   #reviews .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
   .review-card {
-    background: var(--card-bg); border: 1px solid rgba(245,242,237,0.06);
+    background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06);
     border-radius: 20px; padding: 2rem;
     transition: border-color 0.3s, transform 0.3s;
   }
-  .review-card:hover { border-color: rgba(212,168,83,0.3); transform: translateY(-4px); }
-  .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .review-card:hover { border-color: rgba(255,46,77,0.3); transform: translateY(-4px); }
+  .review-stars { color: var(--violet); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
   .review-card p { font-size: 0.9rem; color: var(--cream); line-height: 1.7; font-style: italic; margin-bottom: 1.25rem; }
   .reviewer { display: flex; align-items: center; gap: 0.75rem; }
   .reviewer-avatar {
     width: 38px; height: 38px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--violet), var(--gold));
+    background: linear-gradient(135deg, var(--violet), var(--slate));
     display: flex; align-items: center; justify-content: center;
     font-size: 0.8rem; font-weight: 700; color: #fff;
   }
@@ -294,6 +294,7 @@
   /* ── PROCESS ── */
   #process { background: var(--card-bg); }
   .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 4rem; position: relative; }
+  .process-steps::before { display: none; }
   .process-step { padding: 2rem 1.5rem; position: relative; }
   .process-step::after {
     content: '→'; position: absolute; right: -0.5rem; top: 2.25rem;
@@ -302,7 +303,7 @@
   .process-step:last-child::after { display: none; }
   .step-circle {
     width: 56px; height: 56px; border-radius: 50%;
-    border: 2px solid var(--violet); background: rgba(124,58,237,0.1);
+    border: 2px solid var(--violet); background: rgba(255,46,77,0.08);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--violet-light);
     margin-bottom: 1.5rem;
@@ -313,12 +314,12 @@
   /* ── INFO STRIP ── */
   #info {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    border-top: 1px solid rgba(245,242,237,0.06);
-    border-bottom: 1px solid rgba(245,242,237,0.06);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .info-cell {
     padding: 3rem 2.5rem;
-    border-right: 1px solid rgba(245,242,237,0.06);
+    border-right: 1px solid rgba(255,255,255,0.06);
   }
   .info-cell:last-child { border-right: none; }
   .info-icon { font-size: 1.5rem; margin-bottom: 1rem; }
@@ -330,7 +331,7 @@
   /* ── CTA ── */
   #cta {
     text-align: center; padding: 8rem 4rem;
-    background: linear-gradient(135deg, rgba(124,58,237,0.18) 0%, rgba(13,15,26,0) 50%, rgba(212,168,83,0.08) 100%);
+    background: linear-gradient(135deg, rgba(255,46,77,0.1) 0%, rgba(10,10,10,0) 50%, rgba(255,255,255,0.02) 100%);
     position: relative; overflow: hidden;
   }
   #cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; max-width: 700px; margin: 0 auto 1.5rem; }
@@ -342,18 +343,18 @@
   }
   .contact-pill {
     display: flex; align-items: center; gap: 0.6rem;
-    background: rgba(245,242,237,0.05); border: 1px solid rgba(245,242,237,0.1);
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
     border-radius: 50px; padding: 0.65rem 1.25rem;
     font-size: 0.875rem; color: var(--slate); text-decoration: none;
     transition: all 0.2s;
   }
-  .contact-pill:hover { border-color: rgba(124,58,237,0.4); color: var(--cream); }
+  .contact-pill:hover { border-color: rgba(255,46,77,0.4); color: var(--cream); }
 
   /* ── FOOTER ── */
   footer {
-    background: #080A13; padding: 3rem 4rem;
+    background: #050505; padding: 3rem 4rem;
     display: flex; justify-content: space-between; align-items: center;
-    border-top: 1px solid rgba(245,242,237,0.06); flex-wrap: wrap; gap: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1.5rem;
   }
   .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--cream); }
   .footer-logo span { color: var(--violet); }
@@ -376,7 +377,7 @@
     .process-steps { grid-template-columns: 1fr 1fr; }
     .process-step::after { display: none; }
     #info { grid-template-columns: 1fr 1fr; }
-    .info-cell { border-right: none; border-bottom: 1px solid rgba(245,242,237,0.06); }
+    .info-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
     footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
     .hero-stats { gap: 1.5rem; }
     .services-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
@@ -391,9 +392,8 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#"><span>A</span>strix Studio</a>
+  <a class="nav-logo" href="#"><span>✦</span>strix Studio</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -404,7 +404,6 @@
   <a class="nav-cta" href="mailto:contact@astrixstudio.com.au">Get a Quote</a>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -424,7 +423,7 @@
     </div>
     <div class="hero-stats">
       <div>
-        <span class="stat-num">4.9<span>★</span></span>
+        <span class="stat-num">4.9<span>✦</span></span>
         <div class="stat-label">Average Rating</div>
       </div>
       <div>
@@ -443,7 +442,6 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
     <span class="marquee-item">Logo Design <span>✦</span></span>
@@ -455,7 +453,6 @@
     <span class="marquee-item">Print Design <span>✦</span></span>
     <span class="marquee-item">Custom Artwork <span>✦</span></span>
     <span class="marquee-item">Advertising Materials <span>✦</span></span>
-    <!-- duplicate for seamless loop -->
     <span class="marquee-item">Logo Design <span>✦</span></span>
     <span class="marquee-item">Brand Identity <span>✦</span></span>
     <span class="marquee-item">Graphic Design <span>✦</span></span>
@@ -468,14 +465,13 @@
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
     <div class="about-visual reveal">
       <div class="about-visual-ring ring1"></div>
       <div class="about-visual-ring ring2"></div>
       <div class="about-visual-inner">
-        <div class="logo-display">A✦</div>
+        <div class="logo-display">✦</div>
       </div>
     </div>
     <div class="about-text reveal">
@@ -489,7 +485,7 @@
           <span>42 Creative Lane, 3072</span>
         </div>
         <div class="highlight-chip">
-          <strong>⭐ 4.9 / 5</strong>
+          <strong>✦ 4.9 / 5</strong>
           <span>47 verified reviews</span>
         </div>
         <div class="highlight-chip">
@@ -505,7 +501,6 @@
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="services-header reveal">
     <div>
@@ -563,7 +558,6 @@
   </div>
 </section>
 
-<!-- WHY US -->
 <section id="why">
   <div class="section-eyebrow reveal">Why Astrix Studio</div>
   <h2 class="section-title reveal">The studio that goes<br/><em>the extra mile.</em></h2>
@@ -600,7 +594,7 @@
     </div>
     <div class="why-right reveal">
       <div class="rating-card">
-        <div class="stars">★★★★★</div>
+        <div class="stars">✦✦✦✦✦</div>
         <div class="rating-score">4.9</div>
         <div class="rating-label">Out of 5 · Based on 47 Reviews</div>
         <div class="review-snippet">
@@ -616,13 +610,12 @@
   </div>
 </section>
 
-<!-- REVIEWS -->
 <section id="reviews">
   <div class="section-eyebrow reveal">Client Reviews</div>
   <h2 class="section-title reveal">Words from the<br/><em>people we've helped.</em></h2>
   <div class="reviews-grid">
     <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars">✦✦✦✦✦</div>
       <p>"Astrix Studio created an amazing logo and branding package for my business. The quality and attention to detail were outstanding. I couldn't be happier with the results."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">JM</div>
@@ -633,7 +626,7 @@
       </div>
     </div>
     <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars">✦✦✦✦✦</div>
       <p>"Professional, creative, and easy to work with. Highly recommend Astrix Studio for any design project. They really understood my vision and delivered something exceptional."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">ST</div>
@@ -644,7 +637,7 @@
       </div>
     </div>
     <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars">✦✦✦✦✦</div>
       <p>"Great communication and the final designs looked better than expected. Will definitely use them again for future projects. The whole process was seamless."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">LR</div>
@@ -657,7 +650,6 @@
   </div>
 </section>
 
-<!-- PROCESS -->
 <section id="process">
   <div class="section-eyebrow reveal">How It Works</div>
   <h2 class="section-title reveal">Our process,<br/><em>simplified.</em></h2>
@@ -686,7 +678,6 @@
   </div>
 </section>
 
-<!-- INFO STRIP -->
 <div id="info">
   <div class="info-cell reveal">
     <div class="info-icon">📍</div>
@@ -710,7 +701,6 @@
   </div>
 </div>
 
-<!-- CTA -->
 <section id="cta">
   <div class="section-eyebrow reveal" style="justify-content:center">Ready to Begin?</div>
   <h2 class="reveal">Let's build something<br/><em>brilliant together.</em></h2>
@@ -722,14 +712,13 @@
   <div class="contact-bar reveal">
     <a class="contact-pill" href="mailto:contact@astrixstudio.com.au">✉️ contact@astrixstudio.com.au</a>
     <a class="contact-pill" href="https://www.astrixstudio.com.au" target="_blank">🌐 astrixstudio.com.au</a>
-    <span class="contact-pill">⭐ 4.9 / 5 · 47 Reviews</span>
+    <span class="contact-pill">✦ 4.9 / 5 · 47 Reviews</span>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><span>A</span>strix Studio</div>
-  <p>© 2025 Astrix Studio. All rights reserved. ABN: Preston VIC 3072, Australia.</p>
+  <div class="footer-logo"><span>✦</span>strix Studio</div>
+  <p>© 2026 Astrix Studio. All rights reserved. ABN: Preston VIC 3072, Australia.</p>
   <div class="footer-links">
     <a href="#about">About</a>
     <a href="#services">Services</a>
@@ -755,8 +744,8 @@
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.style.background = window.scrollY > 50
-      ? 'rgba(13,15,26,0.97)'
-      : 'rgba(13,15,26,0.85)';
+      ? 'rgba(10,10,10,0.98)'
+      : 'rgba(10,10,10,0.9)';
   });
 </script>
 </body>
