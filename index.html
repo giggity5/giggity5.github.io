@@ -9,9 +9,9 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink:    #0A0A0A; /* Pure Dark Black */
-    --cream:  #FFFFFF; /* Crisp White */
-    --violet: #FF2E4D; /* Crimson Red */
+    --ink:    #0A0A0A; /* Deep Dark Black Background */
+    --cream:  #FFFFFF; /* Crisp White Text */
+    --violet: #FF2E4D; /* Bold Crimson Red Accent */
     --gold:   #E5E5E5; /* Light Platinum Gray instead of gold */
     --slate:  #A3A3A3; /* Medium Muted Slate */
     --violet-light: #FF6B81; /* Soft Light Red */
@@ -37,12 +37,16 @@
     border-bottom: 1px solid rgba(255,46,77,0.15);
   }
   .nav-logo {
+    display: flex; align-items: center; gap: 0.5rem;
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em;
     color: var(--cream);
     text-decoration: none;
   }
-  .nav-logo span { color: var(--violet); }
+  .logo-svg {
+    width: 24px; height: 24px; fill: var(--violet);
+    display: inline-block; vertical-align: middle;
+  }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
     color: var(--slate); text-decoration: none; font-size: 0.875rem;
@@ -85,7 +89,7 @@
     font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--violet-light); margin-bottom: 2rem;
   }
-  .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+  .hero-badge .logo-svg { width: 12px; height: 12px; fill: var(--violet-light); }
   h1.hero-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(3.2rem, 7vw, 6.5rem);
@@ -126,9 +130,11 @@
     padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08);
   }
   .stat-num {
+    display: flex; align-items: center; gap: 0.2rem;
     font-family: 'Playfair Display', serif;
-    font-size: 2.4rem; font-weight: 900; color: var(--cream); display: block;
+    font-size: 2.4rem; font-weight: 900; color: var(--cream);
   }
+  .stat-num .logo-svg { width: 22px; height: 22px; fill: var(--violet-light); }
   .stat-num span { color: var(--violet-light); }
   .stat-label { font-size: 0.8rem; color: var(--slate); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.25rem; }
 
@@ -155,11 +161,12 @@
     animation: marquee 30s linear infinite;
   }
   .marquee-item {
+    display: inline-flex; align-items: center; gap: 0.5rem;
     font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--slate);
-    padding: 0 3rem;
+    padding: 0 1.5rem;
   }
-  .marquee-item span { color: var(--violet); margin-left: 3rem; }
+  .marquee-item .logo-svg { width: 12px; height: 12px; fill: var(--violet); margin-left: 1.5rem; }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* ── SECTIONS COMMON ── */
@@ -194,11 +201,12 @@
     width: 75%; height: 75%; display: flex; align-items: center; justify-content: center;
   }
   .logo-display {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem; font-weight: 900; text-align: center;
-    background: linear-gradient(135deg, var(--violet) 0%, var(--violet-light) 50%, #FFFFFF 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    line-height: 1;
+    width: 100px; height: 100px;
+    filter: drop-shadow(0 0 20px rgba(255,46,77,0.6));
+  }
+  .logo-display .logo-svg {
+    width: 100%; height: 100%;
+    fill: url(#gradient-id);
   }
   .about-visual-ring {
     position: absolute; border-radius: 50%;
@@ -261,7 +269,8 @@
     background: var(--ink); border: 1px solid rgba(255,46,77,0.2);
     border-radius: 24px; padding: 2.5rem; text-align: center;
   }
-  .stars { color: var(--violet); font-size: 1.75rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .stars { display: flex; justify-content: center; gap: 0.25rem; color: var(--violet); font-size: 1.5rem; margin-bottom: 1rem; }
+  .stars .logo-svg { width: 20px; height: 20px; fill: var(--violet); }
   .rating-score { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: var(--cream); line-height: 1; }
   .rating-label { font-size: 0.85rem; color: var(--slate); margin-top: 0.5rem; margin-bottom: 2rem; }
   .review-snippet {
@@ -279,7 +288,8 @@
     transition: border-color 0.3s, transform 0.3s;
   }
   .review-card:hover { border-color: rgba(255,46,77,0.3); transform: translateY(-4px); }
-  .review-stars { color: var(--violet); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .review-stars { display: flex; gap: 0.2rem; color: var(--violet); margin-bottom: 1rem; }
+  .review-stars .logo-svg { width: 14px; height: 14px; fill: var(--violet); }
   .review-card p { font-size: 0.9rem; color: var(--cream); line-height: 1.7; font-style: italic; margin-bottom: 1.25rem; }
   .reviewer { display: flex; align-items: center; gap: 0.75rem; }
   .reviewer-avatar {
@@ -294,7 +304,6 @@
   /* ── PROCESS ── */
   #process { background: var(--card-bg); }
   .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 4rem; position: relative; }
-  .process-steps::before { display: none; }
   .process-step { padding: 2rem 1.5rem; position: relative; }
   .process-step::after {
     content: '→'; position: absolute; right: -0.5rem; top: 2.25rem;
@@ -349,6 +358,7 @@
     transition: all 0.2s;
   }
   .contact-pill:hover { border-color: rgba(255,46,77,0.4); color: var(--cream); }
+  .contact-pill .logo-svg { width: 14px; height: 14px; fill: var(--violet); }
 
   /* ── FOOTER ── */
   footer {
@@ -356,8 +366,8 @@
     display: flex; justify-content: space-between; align-items: center;
     border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1.5rem;
   }
-  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--cream); }
-  .footer-logo span { color: var(--violet); }
+  .footer-logo { display: flex; align-items: center; gap: 0.4rem; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--cream); }
+  .footer-logo .logo-svg { width: 20px; height: 20px; fill: var(--violet); }
   footer p { font-size: 0.8rem; color: var(--slate); }
   .footer-links { display: flex; gap: 2rem; }
   .footer-links a { font-size: 0.8rem; color: var(--slate); text-decoration: none; transition: color 0.2s; }
@@ -392,8 +402,16 @@
 </head>
 <body>
 
+<svg style="display: none;">
+  <symbol id="asterisk-logo" viewBox="0 0 24 24">
+    <path d="M12,2 L14.1,8.5 L20.8,5.2 L17.5,12 L24,14.1 L17.5,16.2 L20.8,23 L14.1,19.7 L12,26.2 L9.9,19.7 L3.2,23 L6.5,16.2 L0,14.1 L6.5,12 L3.2,5.2 L9.9,8.5 Z" transform="matrix(0.85 0 0 0.85 1.8 1.8) rotate(10 12 12)"/>
+  </symbol>
+</svg>
+
 <nav>
-  <a class="nav-logo" href="#"><span>✦</span>strix Studio</a>
+  <a class="nav-logo" href="#">
+    <svg class="logo-svg"><use href="#asterisk-logo"/></svg>strix Studio
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -410,7 +428,9 @@
   <div class="shape shape-1"></div>
   <div class="shape shape-2"></div>
   <div class="hero-content">
-    <div class="hero-badge">Melbourne's Creative Studio · Est. in Preston VIC</div>
+    <div class="hero-badge">
+      <svg class="logo-svg"><use href="#asterisk-logo"/></svg> Melbourne's Creative Studio · Est. in Preston VIC
+    </div>
     <h1 class="hero-title">
       Design that<br/>
       <span class="gradient-word">commands</span><br/>
@@ -423,7 +443,7 @@
     </div>
     <div class="hero-stats">
       <div>
-        <span class="stat-num">4.9<span>✦</span></span>
+        <span class="stat-num">4.9<svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
         <div class="stat-label">Average Rating</div>
       </div>
       <div>
@@ -444,24 +464,24 @@
 
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item">Logo Design <span>✦</span></span>
-    <span class="marquee-item">Brand Identity <span>✦</span></span>
-    <span class="marquee-item">Graphic Design <span>✦</span></span>
-    <span class="marquee-item">Social Media Content <span>✦</span></span>
-    <span class="marquee-item">Packaging Design <span>✦</span></span>
-    <span class="marquee-item">Digital Illustration <span>✦</span></span>
-    <span class="marquee-item">Print Design <span>✦</span></span>
-    <span class="marquee-item">Custom Artwork <span>✦</span></span>
-    <span class="marquee-item">Advertising Materials <span>✦</span></span>
-    <span class="marquee-item">Logo Design <span>✦</span></span>
-    <span class="marquee-item">Brand Identity <span>✦</span></span>
-    <span class="marquee-item">Graphic Design <span>✦</span></span>
-    <span class="marquee-item">Social Media Content <span>✦</span></span>
-    <span class="marquee-item">Packaging Design <span>✦</span></span>
-    <span class="marquee-item">Digital Illustration <span>✦</span></span>
-    <span class="marquee-item">Print Design <span>✦</span></span>
-    <span class="marquee-item">Custom Artwork <span>✦</span></span>
-    <span class="marquee-item">Advertising Materials <span>✦</span></span>
+    <span class="marquee-item">Logo Design <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Brand Identity <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Graphic Design <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Social Media Content <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Packaging Design <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Digital Illustration <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Print Design <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Custom Artwork <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Advertising Materials <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Logo Design <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Brand Identity <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Graphic Design <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Social Media Content <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Packaging Design <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Digital Illustration <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Print Design <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Custom Artwork <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
+    <span class="marquee-item">Advertising Materials <svg class="logo-svg"><use href="#asterisk-logo"/></svg></span>
   </div>
 </div>
 
@@ -471,7 +491,18 @@
       <div class="about-visual-ring ring1"></div>
       <div class="about-visual-ring ring2"></div>
       <div class="about-visual-inner">
-        <div class="logo-display">✦</div>
+        <div class="logo-display">
+          <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="gradient-id" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--violet)"/>
+                <stop offset="60%" stop-color="var(--violet-light)"/>
+                <stop offset="100%" stop-color="#FFFFFF"/>
+              </linearGradient>
+            </defs>
+            <use href="#asterisk-logo" fill="url(#gradient-id)"/>
+          </svg>
+        </div>
       </div>
     </div>
     <div class="about-text reveal">
@@ -485,7 +516,7 @@
           <span>42 Creative Lane, 3072</span>
         </div>
         <div class="highlight-chip">
-          <strong>✦ 4.9 / 5</strong>
+          <strong><svg class="logo-svg" style="width:14px; height:14px; fill:var(--violet); display:inline-block; vertical-align:middle; margin-right:2px;"><use href="#asterisk-logo"/></svg> 4.9 / 5</strong>
           <span>47 verified reviews</span>
         </div>
         <div class="highlight-chip">
@@ -594,7 +625,13 @@
     </div>
     <div class="why-right reveal">
       <div class="rating-card">
-        <div class="stars">✦✦✦✦✦</div>
+        <div class="stars">
+          <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+          <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+          <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+          <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+          <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        </div>
         <div class="rating-score">4.9</div>
         <div class="rating-label">Out of 5 · Based on 47 Reviews</div>
         <div class="review-snippet">
@@ -615,7 +652,13 @@
   <h2 class="section-title reveal">Words from the<br/><em>people we've helped.</em></h2>
   <div class="reviews-grid">
     <div class="review-card reveal">
-      <div class="review-stars">✦✦✦✦✦</div>
+      <div class="review-stars">
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+      </div>
       <p>"Astrix Studio created an amazing logo and branding package for my business. The quality and attention to detail were outstanding. I couldn't be happier with the results."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">JM</div>
@@ -626,7 +669,13 @@
       </div>
     </div>
     <div class="review-card reveal">
-      <div class="review-stars">✦✦✦✦✦</div>
+      <div class="review-stars">
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+      </div>
       <p>"Professional, creative, and easy to work with. Highly recommend Astrix Studio for any design project. They really understood my vision and delivered something exceptional."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">ST</div>
@@ -637,7 +686,13 @@
       </div>
     </div>
     <div class="review-card reveal">
-      <div class="review-stars">✦✦✦✦✦</div>
+      <div class="review-stars">
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+        <svg class="logo-svg"><use href="#asterisk-logo"/></svg>
+      </div>
       <p>"Great communication and the final designs looked better than expected. Will definitely use them again for future projects. The whole process was seamless."</p>
       <div class="reviewer">
         <div class="reviewer-avatar">LR</div>
@@ -712,12 +767,12 @@
   <div class="contact-bar reveal">
     <a class="contact-pill" href="mailto:contact@astrixstudio.com.au">✉️ contact@astrixstudio.com.au</a>
     <a class="contact-pill" href="https://www.astrixstudio.com.au" target="_blank">🌐 astrixstudio.com.au</a>
-    <span class="contact-pill">✦ 4.9 / 5 · 47 Reviews</span>
+    <span class="contact-pill"><svg class="logo-svg"><use href="#asterisk-logo"/></svg> 4.9 / 5 · 47 Reviews</span>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo"><span>✦</span>strix Studio</div>
+  <div class="footer-logo"><svg class="logo-svg"><use href="#asterisk-logo"/></svg>strix Studio</div>
   <p>© 2026 Astrix Studio. All rights reserved. ABN: Preston VIC 3072, Australia.</p>
   <div class="footer-links">
     <a href="#about">About</a>
