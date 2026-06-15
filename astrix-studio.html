@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Astrix Studio — Creative Design Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:    #0D0F1A;
+    --cream:  #F5F2ED;
+    --violet: #7C3AED;
+    --gold:   #D4A853;
+    --slate:  #8B92A5;
+    --violet-light: #A78BFA;
+    --card-bg: #13162A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ink);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(13,15,26,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(124,58,237,0.18);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--violet); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--slate); text-decoration: none; font-size: 0.875rem;
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-cta {
+    background: var(--violet); color: #fff; border: none;
+    padding: 0.65rem 1.6rem; border-radius: 50px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.25s;
+    letter-spacing: 0.02em; text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--violet-light); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(124,58,237,0.4); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 40%, rgba(124,58,237,0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 15% 75%, rgba(212,168,83,0.1) 0%, transparent 65%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35);
+    border-radius: 50px; padding: 0.4rem 1rem;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--violet-light); margin-bottom: 2rem;
+  }
+  .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+  h1.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    font-weight: 900; line-height: 1.0; letter-spacing: -0.03em;
+    color: var(--cream); margin-bottom: 1.5rem;
+  }
+  h1.hero-title .gradient-word {
+    background: linear-gradient(135deg, var(--violet) 0%, var(--violet-light) 50%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease-in-out infinite alternate;
+  }
+  @keyframes gradientShift {
+    from { filter: hue-rotate(0deg); }
+    to   { filter: hue-rotate(20deg); }
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 1.5vw, 1.2rem); color: var(--slate);
+    max-width: 520px; line-height: 1.7; margin-bottom: 2.75rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--violet); color: #fff;
+    padding: 0.9rem 2.2rem; border-radius: 50px; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--violet-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,58,237,0.45); }
+  .btn-ghost {
+    border: 1px solid rgba(245,242,237,0.25); color: var(--cream);
+    padding: 0.9rem 2.2rem; border-radius: 50px; background: transparent;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500;
+    cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--violet-light); color: var(--violet-light); }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2rem; border-top: 1px solid rgba(245,242,237,0.08);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 900; color: var(--cream); display: block;
+  }
+  .stat-num span { color: var(--violet-light); }
+  .stat-label { font-size: 0.8rem; color: var(--slate); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.25rem; }
+
+  /* Floating shapes */
+  .shape {
+    position: absolute; border-radius: 50%; filter: blur(80px);
+    pointer-events: none; animation: floatShape 8s ease-in-out infinite;
+  }
+  .shape-1 { width: 500px; height: 500px; background: rgba(124,58,237,0.12); right: -100px; top: 10%; animation-delay: 0s; }
+  .shape-2 { width: 300px; height: 300px; background: rgba(212,168,83,0.08); right: 20%; bottom: 5%; animation-delay: 3s; }
+  @keyframes floatShape {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-30px) scale(1.05); }
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-section {
+    border-top: 1px solid rgba(245,242,237,0.06);
+    border-bottom: 1px solid rgba(245,242,237,0.06);
+    padding: 1.2rem 0; overflow: hidden; background: rgba(124,58,237,0.04);
+  }
+  .marquee-track {
+    display: flex; white-space: nowrap;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-item {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--slate);
+    padding: 0 3rem;
+  }
+  .marquee-item span { color: var(--violet); margin-left: 3rem; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 7rem 4rem; }
+  .section-eyebrow {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--violet-light);
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--violet); }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900;
+    letter-spacing: -0.02em; line-height: 1.1; color: var(--cream);
+  }
+  h2.section-title em { font-style: italic; color: var(--violet-light); }
+  .section-desc {
+    font-size: 1.05rem; color: var(--slate); line-height: 1.75;
+    max-width: 540px; margin-top: 1.25rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--card-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .about-visual {
+    aspect-ratio: 1; background: var(--ink);
+    border-radius: 24px; border: 1px solid rgba(124,58,237,0.2);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .about-visual-inner {
+    width: 75%; height: 75%; display: flex; align-items: center; justify-content: center;
+  }
+  .logo-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; font-weight: 900; text-align: center;
+    background: linear-gradient(135deg, var(--violet) 0%, var(--violet-light) 50%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1;
+  }
+  .about-visual-ring {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(124,58,237,0.15);
+  }
+  .ring1 { width: 110%; height: 110%; animation: rotateRing 20s linear infinite; }
+  .ring2 { width: 90%; height: 90%; animation: rotateRing 15s linear infinite reverse; }
+  @keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  .about-text p { color: var(--slate); line-height: 1.8; margin-bottom: 1.25rem; }
+  .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .highlight-chip {
+    background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 12px; padding: 1rem 1.25rem;
+  }
+  .highlight-chip strong { display: block; color: var(--cream); font-size: 1.1rem; margin-bottom: 0.15rem; }
+  .highlight-chip span { font-size: 0.8rem; color: var(--slate); }
+
+  /* ── SERVICES ── */
+  #services .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .service-card {
+    background: var(--card-bg); border: 1px solid rgba(245,242,237,0.06);
+    border-radius: 20px; padding: 2rem; cursor: default;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--violet), var(--gold));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+  }
+  .service-card:hover { transform: translateY(-6px); border-color: rgba(124,58,237,0.3); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--cream); margin-bottom: 0.75rem; }
+  .service-card p { font-size: 0.875rem; color: var(--slate); line-height: 1.7; }
+
+  /* ── WHY US ── */
+  #why { background: var(--card-bg); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 4rem; }
+  .why-list { display: flex; flex-direction: column; gap: 2rem; }
+  .why-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .why-num {
+    flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--violet), var(--violet-light));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: #fff;
+  }
+  .why-item h4 { font-size: 1.05rem; color: var(--cream); font-weight: 600; margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.875rem; color: var(--slate); line-height: 1.7; }
+  .why-right { position: relative; }
+  .rating-card {
+    background: var(--ink); border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 24px; padding: 2.5rem; text-align: center;
+  }
+  .stars { color: var(--gold); font-size: 1.75rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .rating-score { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: var(--cream); line-height: 1; }
+  .rating-label { font-size: 0.85rem; color: var(--slate); margin-top: 0.5rem; margin-bottom: 2rem; }
+  .review-snippet {
+    background: rgba(124,58,237,0.08); border-radius: 14px; padding: 1.25rem;
+    border-left: 3px solid var(--violet); text-align: left; margin-top: 1rem;
+  }
+  .review-snippet p { font-size: 0.85rem; color: var(--cream); line-height: 1.6; font-style: italic; }
+  .review-snippet cite { font-size: 0.75rem; color: var(--slate); display: block; margin-top: 0.5rem; font-style: normal; font-weight: 600; }
+
+  /* ── REVIEWS ── */
+  #reviews .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+  .review-card {
+    background: var(--card-bg); border: 1px solid rgba(245,242,237,0.06);
+    border-radius: 20px; padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .review-card:hover { border-color: rgba(212,168,83,0.3); transform: translateY(-4px); }
+  .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .review-card p { font-size: 0.9rem; color: var(--cream); line-height: 1.7; font-style: italic; margin-bottom: 1.25rem; }
+  .reviewer { display: flex; align-items: center; gap: 0.75rem; }
+  .reviewer-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700; color: #fff;
+  }
+  .reviewer-name { font-size: 0.875rem; color: var(--cream); font-weight: 600; }
+  .reviewer-tag { font-size: 0.72rem; color: var(--slate); }
+
+  /* ── PROCESS ── */
+  #process { background: var(--card-bg); }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 4rem; position: relative; }
+  .process-step { padding: 2rem 1.5rem; position: relative; }
+  .process-step::after {
+    content: '→'; position: absolute; right: -0.5rem; top: 2.25rem;
+    font-size: 1.25rem; color: var(--violet);
+  }
+  .process-step:last-child::after { display: none; }
+  .step-circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 2px solid var(--violet); background: rgba(124,58,237,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--violet-light);
+    margin-bottom: 1.5rem;
+  }
+  .process-step h4 { font-size: 1rem; color: var(--cream); font-weight: 700; margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.82rem; color: var(--slate); line-height: 1.65; }
+
+  /* ── INFO STRIP ── */
+  #info {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid rgba(245,242,237,0.06);
+    border-bottom: 1px solid rgba(245,242,237,0.06);
+  }
+  .info-cell {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid rgba(245,242,237,0.06);
+  }
+  .info-cell:last-child { border-right: none; }
+  .info-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+  .info-cell h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.75rem; }
+  .info-cell p { font-size: 0.9rem; color: var(--cream); line-height: 1.6; }
+  .info-cell a { color: var(--violet-light); text-decoration: none; }
+  .info-cell a:hover { text-decoration: underline; }
+
+  /* ── CTA ── */
+  #cta {
+    text-align: center; padding: 8rem 4rem;
+    background: linear-gradient(135deg, rgba(124,58,237,0.18) 0%, rgba(13,15,26,0) 50%, rgba(212,168,83,0.08) 100%);
+    position: relative; overflow: hidden;
+  }
+  #cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; max-width: 700px; margin: 0 auto 1.5rem; }
+  #cta h2 em { font-style: italic; color: var(--violet-light); }
+  #cta p { color: var(--slate); font-size: 1.1rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
+  .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-bar {
+    display: flex; gap: 2rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap;
+  }
+  .contact-pill {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: rgba(245,242,237,0.05); border: 1px solid rgba(245,242,237,0.1);
+    border-radius: 50px; padding: 0.65rem 1.25rem;
+    font-size: 0.875rem; color: var(--slate); text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-pill:hover { border-color: rgba(124,58,237,0.4); color: var(--cream); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080A13; padding: 3rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(245,242,237,0.06); flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--cream); }
+  .footer-logo span { color: var(--violet); }
+  footer p { font-size: 0.8rem; color: var(--slate); }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.8rem; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--violet-light); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 4rem; }
+    .about-grid, .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-step::after { display: none; }
+    #info { grid-template-columns: 1fr 1fr; }
+    .info-cell { border-right: none; border-bottom: 1px solid rgba(245,242,237,0.06); }
+    footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+    .hero-stats { gap: 1.5rem; }
+    .services-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    #cta { padding: 5rem 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .services-grid, .process-steps, #info { grid-template-columns: 1fr; }
+    h1.hero-title { font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>A</span>strix Studio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#info">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:contact@astrixstudio.com.au">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Melbourne's Creative Studio · Est. in Preston VIC</div>
+    <h1 class="hero-title">
+      Design that<br/>
+      <span class="gradient-word">commands</span><br/>
+      attention.
+    </h1>
+    <p class="hero-sub">Astrix Studio crafts bold brand identities, striking visuals, and unforgettable digital experiences for businesses ready to stand out.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="mailto:contact@astrixstudio.com.au">Start a Project</a>
+      <a class="btn-ghost" href="#services">Explore Services</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">4.9<span>★</span></span>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div>
+        <span class="stat-num">47<span>+</span></span>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div>
+        <span class="stat-num">9<span>+</span></span>
+        <div class="stat-label">Services Offered</div>
+      </div>
+      <div>
+        <span class="stat-num">🌏</span>
+        <div class="stat-label">Worldwide Online</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Logo Design <span>✦</span></span>
+    <span class="marquee-item">Brand Identity <span>✦</span></span>
+    <span class="marquee-item">Graphic Design <span>✦</span></span>
+    <span class="marquee-item">Social Media Content <span>✦</span></span>
+    <span class="marquee-item">Packaging Design <span>✦</span></span>
+    <span class="marquee-item">Digital Illustration <span>✦</span></span>
+    <span class="marquee-item">Print Design <span>✦</span></span>
+    <span class="marquee-item">Custom Artwork <span>✦</span></span>
+    <span class="marquee-item">Advertising Materials <span>✦</span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Logo Design <span>✦</span></span>
+    <span class="marquee-item">Brand Identity <span>✦</span></span>
+    <span class="marquee-item">Graphic Design <span>✦</span></span>
+    <span class="marquee-item">Social Media Content <span>✦</span></span>
+    <span class="marquee-item">Packaging Design <span>✦</span></span>
+    <span class="marquee-item">Digital Illustration <span>✦</span></span>
+    <span class="marquee-item">Print Design <span>✦</span></span>
+    <span class="marquee-item">Custom Artwork <span>✦</span></span>
+    <span class="marquee-item">Advertising Materials <span>✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-visual-ring ring1"></div>
+      <div class="about-visual-ring ring2"></div>
+      <div class="about-visual-inner">
+        <div class="logo-display">A✦</div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-eyebrow">About Us</div>
+      <h2 class="section-title">Founded on passion.<br/><em>Built on craft.</em></h2>
+      <p style="margin-top:1.25rem">Astrix Studio was born from a genuine love of creative problem-solving. Based in Preston, Melbourne, we work with businesses, artists, and organisations across Australia and worldwide to translate their vision into design that resonates.</p>
+      <p>We combine modern design sensibilities with deep strategic thinking — every project is tailored, intentional, and built to make a lasting impression.</p>
+      <div class="about-highlights">
+        <div class="highlight-chip">
+          <strong>📍 Preston VIC</strong>
+          <span>42 Creative Lane, 3072</span>
+        </div>
+        <div class="highlight-chip">
+          <strong>⭐ 4.9 / 5</strong>
+          <span>47 verified reviews</span>
+        </div>
+        <div class="highlight-chip">
+          <strong>🌍 Worldwide</strong>
+          <span>Online services globally</span>
+        </div>
+        <div class="highlight-chip">
+          <strong>🕒 Mon – Sat</strong>
+          <span>9 AM–5:30 PM (Sat 10–2)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Services built to<br/><em>elevate your brand.</em></h2>
+    </div>
+    <a class="btn-ghost" href="mailto:contact@astrixstudio.com.au">Enquire Now</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">✏️</div>
+      <h3>Logo Design</h3>
+      <p>Distinctive, versatile logos that form the cornerstone of your visual identity — crafted to be timeless and memorable across every medium.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🎨</div>
+      <h3>Brand Identity Design</h3>
+      <p>Complete brand systems including colour palettes, typography, style guides, and visual language that communicate who you are at a glance.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🖌️</div>
+      <h3>Graphic Design</h3>
+      <p>From editorial layouts to promotional materials, our graphic design work is clean, purposeful, and always on-brand for your business.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📱</div>
+      <h3>Social Media Content</h3>
+      <p>Thumb-stopping visuals for Instagram, Facebook, LinkedIn and beyond — consistent content that builds your audience and drives engagement.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📢</div>
+      <h3>Posters & Advertising</h3>
+      <p>Bold, high-impact advertising materials designed to grab attention — from event posters to full campaign artwork and outdoor signage.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📦</div>
+      <h3>Packaging Design</h3>
+      <p>Product packaging that stands out on shelf and online — beautiful, functional design that makes your product irresistible from first glance.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🖼️</div>
+      <h3>Digital Illustrations</h3>
+      <p>Custom illustrations and digital artwork tailored to your brand — characters, icons, editorial art, and bespoke visual storytelling.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🃏</div>
+      <h3>Business Cards & Print</h3>
+      <p>Professional print design that makes a lasting first impression — business cards, letterheads, brochures, and all collateral materials.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🎭</div>
+      <h3>Custom Artwork</h3>
+      <p>One-of-a-kind creative artwork for exhibitions, interiors, gifts, or special projects — where your brief meets our imagination.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-eyebrow reveal">Why Astrix Studio</div>
+  <h2 class="section-title reveal">The studio that goes<br/><em>the extra mile.</em></h2>
+  <div class="why-grid">
+    <div class="why-list">
+      <div class="why-item reveal">
+        <div class="why-num">1</div>
+        <div>
+          <h4>Tailored to Every Client</h4>
+          <p>No cookie-cutter templates. Every project is approached fresh, with solutions designed specifically around your goals, audience, and vision.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">2</div>
+        <div>
+          <h4>Clean, Professional Results</h4>
+          <p>We focus on quality above all — producing polished, versatile designs that hold up across print, digital, and everything in between.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">3</div>
+        <div>
+          <h4>Easy, Clear Communication</h4>
+          <p>Our clients consistently praise how easy we are to work with. We keep you informed, listen carefully, and make the process smooth from start to finish.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">4</div>
+        <div>
+          <h4>Melbourne Local, Globally Connected</h4>
+          <p>Proudly based in Preston, VIC — with the tools and experience to serve clients across Australia and worldwide via our online services.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-right reveal">
+      <div class="rating-card">
+        <div class="stars">★★★★★</div>
+        <div class="rating-score">4.9</div>
+        <div class="rating-label">Out of 5 · Based on 47 Reviews</div>
+        <div class="review-snippet">
+          <p>"Astrix Studio created an amazing logo and branding package for my business. The quality and attention to detail were outstanding."</p>
+          <cite>— Jordan M., Verified Client</cite>
+        </div>
+        <div class="review-snippet" style="margin-top:0.75rem">
+          <p>"Great communication and the final designs looked better than expected. Will definitely use them again."</p>
+          <cite>— Liam R., Verified Client</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-eyebrow reveal">Client Reviews</div>
+  <h2 class="section-title reveal">Words from the<br/><em>people we've helped.</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p>"Astrix Studio created an amazing logo and branding package for my business. The quality and attention to detail were outstanding. I couldn't be happier with the results."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">JM</div>
+        <div>
+          <div class="reviewer-name">Jordan M.</div>
+          <div class="reviewer-tag">Verified Client · Branding Package</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p>"Professional, creative, and easy to work with. Highly recommend Astrix Studio for any design project. They really understood my vision and delivered something exceptional."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">ST</div>
+        <div>
+          <div class="reviewer-name">Sarah T.</div>
+          <div class="reviewer-tag">Verified Client · Graphic Design</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p>"Great communication and the final designs looked better than expected. Will definitely use them again for future projects. The whole process was seamless."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">LR</div>
+        <div>
+          <div class="reviewer-name">Liam R.</div>
+          <div class="reviewer-tag">Verified Client · Logo & Print</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-eyebrow reveal">How It Works</div>
+  <h2 class="section-title reveal">Our process,<br/><em>simplified.</em></h2>
+  <p class="section-desc reveal">From first conversation to final delivery, we keep things clear, collaborative, and creative every step of the way.</p>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-circle">01</div>
+      <h4>Discovery</h4>
+      <p>We start with a deep-dive conversation to understand your business, goals, target audience, and design preferences.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-circle">02</div>
+      <h4>Concept</h4>
+      <p>Our team develops initial creative concepts and presents options that align with your brand direction and brief.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-circle">03</div>
+      <h4>Refine</h4>
+      <p>We collaborate closely with you through revisions, fine-tuning every detail until the design is exactly right.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-circle">04</div>
+      <h4>Deliver</h4>
+      <p>Final files are packaged and delivered in every format you need — ready for print, digital, and everywhere in between.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div id="info">
+  <div class="info-cell reveal">
+    <div class="info-icon">📍</div>
+    <h4>Location</h4>
+    <p>42 Creative Lane<br/>Preston VIC 3072<br/>Australia</p>
+  </div>
+  <div class="info-cell reveal">
+    <div class="info-icon">🕒</div>
+    <h4>Hours</h4>
+    <p>Mon–Fri: 9:00 AM – 5:30 PM<br/>Saturday: 10:00 AM – 2:00 PM<br/>Sunday: Closed</p>
+  </div>
+  <div class="info-cell reveal">
+    <div class="info-icon">📞</div>
+    <h4>Phone & Email</h4>
+    <p><a href="tel:0391234587">(03) 9123 4587</a><br/><a href="mailto:contact@astrixstudio.com.au">contact@astrixstudio.com.au</a></p>
+  </div>
+  <div class="info-cell reveal">
+    <div class="info-icon">🌐</div>
+    <h4>Website & Service Area</h4>
+    <p><a href="https://www.astrixstudio.com.au" target="_blank">www.astrixstudio.com.au</a><br/>Melbourne, VIC &amp;<br/>Online Worldwide</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-eyebrow reveal" style="justify-content:center">Ready to Begin?</div>
+  <h2 class="reveal">Let's build something<br/><em>brilliant together.</em></h2>
+  <p class="reveal">Whether you have a full brief or just a spark of an idea — we'd love to hear from you. Reach out and let's start creating.</p>
+  <div class="cta-actions reveal">
+    <a class="btn-primary" href="mailto:contact@astrixstudio.com.au">Email Us Today</a>
+    <a class="btn-ghost" href="tel:0391234587">Call (03) 9123 4587</a>
+  </div>
+  <div class="contact-bar reveal">
+    <a class="contact-pill" href="mailto:contact@astrixstudio.com.au">✉️ contact@astrixstudio.com.au</a>
+    <a class="contact-pill" href="https://www.astrixstudio.com.au" target="_blank">🌐 astrixstudio.com.au</a>
+    <span class="contact-pill">⭐ 4.9 / 5 · 47 Reviews</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>A</span>strix Studio</div>
+  <p>© 2025 Astrix Studio. All rights reserved. ABN: Preston VIC 3072, Australia.</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#reviews">Reviews</a>
+    <a href="mailto:contact@astrixstudio.com.au">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 50
+      ? 'rgba(13,15,26,0.97)'
+      : 'rgba(13,15,26,0.85)';
+  });
+</script>
+</body>
+</html>
